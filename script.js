@@ -55,8 +55,7 @@ function drawGrid(numOfGrids) {
         } else {
             newGrid.classList.add("grid-unit-borderless");
         }
-        newGrid.addEventListener("mouseover", () => {
-
+        newGrid.addEventListener("mouseover", () => { // draw to the canvas as mouse passes over - will draw random color if rainbow mode is on, otherwise just black
             if(gridCanvas.rainbowMode) {
                 newGrid.style.backgroundColor = generateRainbowColor();
             } else newGrid.style.backgroundColor = "black";
