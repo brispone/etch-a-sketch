@@ -61,6 +61,7 @@ function changeDimensions() {
 
 }
 
+// Function to toggle gridlines on and off
 function toggleGridlines() {
     const grids = document.querySelector("#grid-container").childNodes;
 
@@ -94,5 +95,16 @@ document.querySelector("#gridlines-btn").addEventListener("click", () => toggleG
 document.addEventListener("keydown", function(event) {
     if(event.code === "KeyG") {
         toggleGridlines();
+        return;
     }
-})
+
+    if(event.code === "KeyC") {
+        drawGrid(gridCanvas.currentDimensions);
+        return;
+    }
+
+    if(event.code === "KeyD") {
+        changeDimensions();
+        return;
+    }
+});
