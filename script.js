@@ -1,5 +1,4 @@
-//let currentDimensions = 16; // global variable to keep track of current dimensions in case canvas needs to be redrawn
-
+// Initalize an object to store all of the global variables needed for current properties of the grid
 const gridCanvas = {
     currentDimensions: 16,
     gridlines: true
