@@ -6,12 +6,23 @@
     cursor: none;
 }
 
-#grid-container > * {
+.grid-unit {
     border: 1px solid #505050;
     box-sizing: border-box;
     background: #F0F0F0;
 }
 /* Playing around with visibility while surrounded by all black squares - loses some of that classic EtchASketch "feel" though */
-#grid-container > *:hover {
+.grid-unit:hover {
     border: 1px inset #505050;
 }
+
+.grid-unit-borderless {
+    border: none;
+    box-sizing: border-box;
+    background: #F0F0F0;
+}
+/* Playing around with visibility while surrounded by all black squares - loses some of that classic EtchASketch "feel" though */
+.grid-unit-borderless:hover {
+    border: 1px solid #505050;
+}
+

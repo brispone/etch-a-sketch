@@ -18,6 +18,11 @@ function drawGrid(numOfGrids) {
     for(let i = 0; i < totalGrids; i++) {
         const newGrid = document.createElement("div");
         newGrid.style.cssText = `height: ${gridSize}px; width: ${gridSize}px`;
+        if(gridCanvas.gridlines) { // if gridlines are turned on, add css styling w/ border, else add one without
+            newGrid.classList.add("grid-unit");
+        } else {
+            newGrid.classList.add("grid-unit-borderless");
+        }
         newGrid.addEventListener("mouseover", () => {
             newGrid.style.backgroundColor = "black";
         });
