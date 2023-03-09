@@ -1,3 +1,5 @@
+let currentDimensions = 16; // global variable to keep track of current dimensions in case canvas needs to be redrawn
+
 function drawGrid(numOfGrids) {
     const canvas = document.querySelector("#grid-container");
     canvas.replaceChildren(); //erases current grid
@@ -26,7 +28,9 @@ function drawGrid(numOfGrids) {
     
 }
 
+// Initialize canvas at 16x16
 drawGrid(16);
+
 
 function changeDimensions() {
     const newDimensions = prompt("Enter new dimensions for the grid (e.g., 16 for 16x16, 32 for 32x32, etc. Max 80)");
@@ -48,8 +52,13 @@ function changeDimensions() {
         return changeDimensions()
     }
 
+    currentDimensions = newDimensions;
     drawGrid(newDimensions);
 
 }
 
 document.querySelector("#change-dimensions-btn").addEventListener("click", () => changeDimensions());
+
+document.querySelector("#clear-btn").addEventListener("click", () => {
+    drawGrid(currentDimensions);
+});
