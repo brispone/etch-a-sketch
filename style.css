@@ -11,3 +11,7 @@
     box-sizing: border-box;
     background: #F0F0F0;
 }
+/* Playing around with visibility while surrounded by all black squares - loses some of that classic EtchASketch "feel" though */
+#grid-container > *:hover {
+    border: 1px inset #505050;
+}
