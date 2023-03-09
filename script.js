@@ -3,7 +3,8 @@ const gridCanvas = {
     currentDimensions: 16,
     gridlines: true,
     rainbowMode: false,
-    eraserMode: false
+    eraserMode: false,
+    cursorPosition: 1
 };
 
 
@@ -96,6 +97,7 @@ function changeDimensions() {
     }
 
     gridCanvas.currentDimensions = newDimensions;
+    gridCanvas.cursorPosition = 1;
     drawGrid(newDimensions);
 
 }
@@ -181,3 +183,92 @@ document.addEventListener("keydown", function(event) {
         return;
     }
 });
+
+/*
+
+let animationID;
+let isRightKeyPressed = false;
+let isDownKeyPressed = false;
+let isLeftKeyPressed = false;
+let lastUpdateTime = 0;
+
+function moveCursorRight() {
+    const currentTime = Date.now();
+    if (isRightKeyPressed && (currentTime - lastUpdateTime > 25 && (gridCanvas.cursorPosition === 0 || gridCanvas.cursorPosition % gridCanvas.currentDimensions != 0))) {
+    animationID = requestAnimationFrame(moveCursorRight);
+    const grids = document.querySelector("#grid-container").childNodes;
+      gridCanvas.cursorPosition++;
+      grids[gridCanvas.cursorPosition-1].style.backgroundColor = "black";
+      lastUpdateTime = currentTime;
+    }
+}
+
+function moveCursorLeft() {
+    const currentTime = Date.now();
+    if (isLeftKeyPressed && (currentTime - lastUpdateTime > 25 && (gridCanvas.cursorPosition-1) % gridCanvas.currentDimensions != 0)) {
+    animationID = requestAnimationFrame(moveCursorLeft);
+    const grids = document.querySelector("#grid-container").childNodes;
+      gridCanvas.cursorPosition--;
+      grids[gridCanvas.cursorPosition-1].style.backgroundColor = "black";
+      lastUpdateTime = currentTime;
+    }
+}
+
+function moveCursorDown() {
+    const currentTime = Date.now();
+    if (isDownKeyPressed && (currentTime - lastUpdateTime > 25 && (gridCanvas.cursorPosition <= (gridCanvas.currentDimensions * gridCanvas.currentDimensions)- gridCanvas.currentDimensions))) {
+    animationID = requestAnimationFrame(moveCursorDown);
+    const grids = document.querySelector("#grid-container").childNodes;
+      gridCanvas.cursorPosition += gridCanvas.currentDimensions;
+      grids[gridCanvas.cursorPosition-1].style.backgroundColor = "black";
+      lastUpdateTime = currentTime;
+    }
+}
+
+function moveCursorUp() {
+    const currentTime = Date.now();
+    if (isUpKeyPressed && (currentTime - lastUpdateTime > 25 && (gridCanvas.cursorPosition > gridCanvas.currentDimensions))) {
+    animationID = requestAnimationFrame(moveCursorUp);
+    const grids = document.querySelector("#grid-container").childNodes;
+      gridCanvas.cursorPosition -= gridCanvas.currentDimensions;
+      grids[gridCanvas.cursorPosition-1].style.backgroundColor = "black";
+      lastUpdateTime = currentTime;
+    }
+}
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') {
+        isLeftKeyPressed = true;
+      moveCursorLeft();
+    } else if (event.key === 'ArrowRight') {
+        isRightKeyPressed = true;
+      moveCursorRight();
+    } else if (event.key === 'ArrowDown') {
+        isDownKeyPressed = true;
+      moveCursorDown();
+    }else if (event.key === 'ArrowUp') {
+        isUpKeyPressed = true;
+      moveCursorUp();
+    }
+  });
+  
+  document.addEventListener('keyup', (event) => {
+    if (event.key === 'ArrowRight') {
+      isRightKeyPressed = false;
+      cancelAnimationFrame(animationID);
+    }
+    if (event.key === 'ArrowDown') {
+        isDownKeyPressed = false;
+        cancelAnimationFrame(animationID);
+      }
+      if (event.key === 'ArrowLeft') {
+        isLeftKeyPressed = false;
+        cancelAnimationFrame(animationID);
+      }
+      if (event.key === 'ArrowUp') {
+        isUpKeyPressed = false;
+        cancelAnimationFrame(animationID);
+      }
+  });
+
+  */
