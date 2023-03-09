@@ -1,4 +1,4 @@
-// Initalize an object to store all of the global variables needed for current properties of the grid
+// Initalize an object to store all of the global variables needed for current settings
 const gridCanvas = {
     currentDimensions: 16,
     gridlines: true,
