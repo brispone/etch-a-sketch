@@ -3,6 +3,7 @@
     border: 2px solid black;
     height: 480px;
     width: 480px;
+    cursor: none;
 }
 
 #grid-container > * {
