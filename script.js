@@ -17,10 +17,10 @@ function drawGrid(numOfGrids) {
             newGrid.style.transition = "0s";
         });
 
-        newGrid.addEventListener("mouseleave", () => {
+        /*newGrid.addEventListener("mouseleave", () => {
             newGrid.style.backgroundColor = "white";
             newGrid.style.transition = "1.3s";
-        });
+        });*/
         canvas.appendChild(newGrid);
     }
     
@@ -29,7 +29,12 @@ function drawGrid(numOfGrids) {
 drawGrid(16);
 
 function changeDimensions() {
-    const newDimensions = prompt("Enter new dimensions for the grid (e.g., 16 for 16x16, 32 for 32x32, etc. Max 100)");
+    const newDimensions = prompt("Enter new dimensions for the grid (e.g., 16 for 16x16, 32 for 32x32, etc. Max 80)");
+
+    // Allow the user to cancel out of prompt and continue drawing
+    if (newDimensions === null) {
+        return;
+    }
     
      // Validate that the input is a positive integer
      if (!/^[1-9]\d*$/.test(newDimensions)) {
@@ -37,9 +42,9 @@ function changeDimensions() {
         return changeDimensions();
     }
     
-    // Validate that the input is within the allowed range (<= 100)
-    if (parseInt(newDimensions) > 100) {
-        alert("Maximum dimensions exceeded. Please enter a number between 1 and 100.");
+    // Validate that the input is within the allowed range (<= 80)
+    if (parseInt(newDimensions) > 80) {
+        alert("Maximum dimensions exceeded. Please enter a number between 1 and 80.");
         return changeDimensions()
     }
 

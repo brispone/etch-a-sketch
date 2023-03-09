@@ -1,8 +1,12 @@
 #grid-container {
     display: grid;
+    border: 2px solid black;
+    height: 480px;
+    width: 480px;
 }
 
 #grid-container > * {
     border: 1px solid #505050;
     box-sizing: border-box;
+    background: #F0F0F0;
 }
