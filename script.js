@@ -16,13 +16,8 @@ function drawGrid(numOfGrids) {
         newGrid.style.cssText = `height: ${gridSize}px; width: ${gridSize}px`;
         newGrid.addEventListener("mouseover", () => {
             newGrid.style.backgroundColor = "black";
-            newGrid.style.transition = "0s";
         });
 
-        /*newGrid.addEventListener("mouseleave", () => {
-            newGrid.style.backgroundColor = "white";
-            newGrid.style.transition = "1.3s";
-        });*/
         canvas.appendChild(newGrid);
     }
     
