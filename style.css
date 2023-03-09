@@ -1,0 +1,8 @@
+#grid-container {
+    display: grid;
+}
+
+#grid-container > * {
+    border: 1px solid #505050;
+    box-sizing: border-box;
+}
