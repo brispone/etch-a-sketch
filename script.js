@@ -79,7 +79,7 @@ function toggleGridlines() {
     }
 }
 
-// All button eventListeners go here 
+// All button event listeners go here 
 
 document.querySelector("#change-dimensions-btn").addEventListener("click", () => changeDimensions());
 
@@ -88,3 +88,11 @@ document.querySelector("#clear-btn").addEventListener("click", () => {
 });
 
 document.querySelector("#gridlines-btn").addEventListener("click", () => toggleGridlines());
+
+
+// Key Press event listeners
+document.addEventListener("keydown", function(event) {
+    if(event.code === "KeyG") {
+        toggleGridlines();
+    }
+})
