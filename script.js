@@ -1,4 +1,9 @@
-let currentDimensions = 16; // global variable to keep track of current dimensions in case canvas needs to be redrawn
+//let currentDimensions = 16; // global variable to keep track of current dimensions in case canvas needs to be redrawn
+
+const gridCanvas = {
+    currentDimensions: 16,
+    gridlines: true
+};
 
 function drawGrid(numOfGrids) {
     const canvas = document.querySelector("#grid-container");
@@ -47,7 +52,7 @@ function changeDimensions() {
         return changeDimensions()
     }
 
-    currentDimensions = newDimensions;
+    gridCanvas.currentDimensions = newDimensions;
     drawGrid(newDimensions);
 
 }
@@ -55,5 +60,5 @@ function changeDimensions() {
 document.querySelector("#change-dimensions-btn").addEventListener("click", () => changeDimensions());
 
 document.querySelector("#clear-btn").addEventListener("click", () => {
-    drawGrid(currentDimensions);
+    drawGrid(gridCanvas.currentDimensions);
 });
