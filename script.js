@@ -61,8 +61,30 @@ function changeDimensions() {
 
 }
 
+function toggleGridlines() {
+    const grids = document.querySelector("#grid-container").childNodes;
+
+    if(gridCanvas.gridlines) {
+        grids.forEach(grid => {
+            grid.classList.remove("grid-unit");
+            grid.classList.add("grid-unit-borderless");
+        });
+        gridCanvas.gridlines = false;
+    } else {
+        grids.forEach(grid => {
+            grid.classList.remove("grid-unit-borderless");
+            grid.classList.add("grid-unit");
+        });
+        gridCanvas.gridlines = true;
+    }
+}
+
+// All button eventListeners go here 
+
 document.querySelector("#change-dimensions-btn").addEventListener("click", () => changeDimensions());
 
 document.querySelector("#clear-btn").addEventListener("click", () => {
     drawGrid(gridCanvas.currentDimensions);
 });
+
+document.querySelector("#gridlines-btn").addEventListener("click", () => toggleGridlines());
