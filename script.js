@@ -1,8 +1,40 @@
 // Initalize an object to store all of the global variables needed for current properties of the grid
 const gridCanvas = {
     currentDimensions: 16,
-    gridlines: true
+    gridlines: true,
+    rainbowMode: false
 };
+
+
+// Function to generate a random color of the rainbow for rainbow mode
+function generateRainbowColor() {
+    const randomColorNum = Math.floor(Math.random() * 7);
+    let randomColor = "";
+    switch(randomColorNum) {
+        case 0:
+            randomColor = "red";
+            break;
+        case 1:
+            randomColor = "orange";
+            break;
+        case 2:
+            randomColor = "yellow";
+            break;
+        case 3:
+            randomColor = "green";
+            break;
+        case 4:
+            randomColor = "blue";
+            break;
+        case 5:
+            randomColor = "indigo";
+            break;
+        case 6:
+            randomColor = "violet";
+            break;
+    }
+    return randomColor;
+}
 
 function drawGrid(numOfGrids) {
     const canvas = document.querySelector("#grid-container");
@@ -24,7 +56,10 @@ function drawGrid(numOfGrids) {
             newGrid.classList.add("grid-unit-borderless");
         }
         newGrid.addEventListener("mouseover", () => {
-            newGrid.style.backgroundColor = "black";
+
+            if(gridCanvas.rainbowMode) {
+                newGrid.style.backgroundColor = generateRainbowColor();
+            } else newGrid.style.backgroundColor = "black";
         });
 
         canvas.appendChild(newGrid);
@@ -80,6 +115,12 @@ function toggleGridlines() {
     }
 }
 
+function toggleRainbowMode() {
+    if(gridCanvas.rainbowMode) {
+        gridCanvas.rainbowMode = false;
+    } else gridCanvas.rainbowMode = true;
+}
+
 // All button event listeners go here 
 
 document.querySelector("#change-dimensions-btn").addEventListener("click", () => changeDimensions());
@@ -89,6 +130,8 @@ document.querySelector("#clear-btn").addEventListener("click", () => {
 });
 
 document.querySelector("#gridlines-btn").addEventListener("click", () => toggleGridlines());
+
+document.querySelector("#rainbow-btn").addEventListener("click", () => toggleRainbowMode());
 
 
 // Key Press event listeners
@@ -105,6 +148,11 @@ document.addEventListener("keydown", function(event) {
 
     if(event.code === "KeyD") {
         changeDimensions();
+        return;
+    }
+
+    if(event.code === "KeyR") {
+        toggleRainbowMode();
         return;
     }
 });
