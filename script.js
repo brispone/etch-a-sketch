@@ -2,7 +2,8 @@
 const gridCanvas = {
     currentDimensions: 16,
     gridlines: true,
-    rainbowMode: false
+    rainbowMode: false,
+    eraserMode: false
 };
 
 
@@ -55,8 +56,12 @@ function drawGrid(numOfGrids) {
         } else {
             newGrid.classList.add("grid-unit-borderless");
         }
-        newGrid.addEventListener("mouseover", () => { // draw to the canvas as mouse passes over - will draw random color if rainbow mode is on, otherwise just black
-            if(gridCanvas.rainbowMode) {
+
+        // draw to the canvas - if rainbow mode is on, draws random color, if erase mode is on, will reset to background color, otherwise will draw black
+        newGrid.addEventListener("mouseover", () => {
+            if(gridCanvas.eraserMode) {
+                newGrid.style.backgroundColor = "#F0F0F0";
+            } else if(gridCanvas.rainbowMode) {
                 newGrid.style.backgroundColor = generateRainbowColor();
             } else newGrid.style.backgroundColor = "black";
         });
@@ -117,7 +122,21 @@ function toggleGridlines() {
 function toggleRainbowMode() {
     if(gridCanvas.rainbowMode) {
         gridCanvas.rainbowMode = false;
-    } else gridCanvas.rainbowMode = true;
+        document.querySelector("#rainbow-btn").classList.remove("btn-activated");
+    } else {
+        gridCanvas.rainbowMode = true;
+        document.querySelector("#rainbow-btn").classList.add("btn-activated");
+    }
+}
+
+function toggleEraserMode() {
+    if(gridCanvas.eraserMode) {
+        gridCanvas.eraserMode = false;
+        document.querySelector("#eraser-btn").classList.remove("btn-activated");
+    } else {
+        gridCanvas.eraserMode = true;
+        document.querySelector("#eraser-btn").classList.add("btn-activated");
+    }
 }
 
 // All button event listeners go here 
@@ -131,6 +150,8 @@ document.querySelector("#clear-btn").addEventListener("click", () => {
 document.querySelector("#gridlines-btn").addEventListener("click", () => toggleGridlines());
 
 document.querySelector("#rainbow-btn").addEventListener("click", () => toggleRainbowMode());
+
+document.querySelector("#eraser-btn").addEventListener("click", () => toggleEraserMode());
 
 
 // Key Press event listeners
@@ -152,6 +173,11 @@ document.addEventListener("keydown", function(event) {
 
     if(event.code === "KeyR") {
         toggleRainbowMode();
+        return;
+    }
+
+    if(event.code === "KeyE") {
+        toggleEraserMode();
         return;
     }
 });
