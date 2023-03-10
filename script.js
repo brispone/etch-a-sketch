@@ -128,20 +128,20 @@ function toggleGridlines() {
 function toggleRainbowMode() {
     if(gridCanvas.rainbowMode) {
         gridCanvas.rainbowMode = false;
-        document.querySelector("#rainbow-btn").classList.remove("btn-activated");
+        document.querySelector("#rainbow-btn").classList.remove("activated");
     } else {
         gridCanvas.rainbowMode = true;
-        document.querySelector("#rainbow-btn").classList.add("btn-activated");
+        document.querySelector("#rainbow-btn").classList.add("activated");
     }
 }
 
 function toggleEraserMode() {
     if(gridCanvas.eraserMode) {
         gridCanvas.eraserMode = false;
-        document.querySelector("#eraser-btn").classList.remove("btn-activated");
+        document.querySelector("#eraser-btn").classList.remove("activated");
     } else {
         gridCanvas.eraserMode = true;
-        document.querySelector("#eraser-btn").classList.add("btn-activated");
+        document.querySelector("#eraser-btn").classList.add("activated");
     }
 }
 
