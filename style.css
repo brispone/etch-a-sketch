@@ -4,6 +4,30 @@
     align-items: center;
     gap: 25px;
     margin-top: 100px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#container-2 {
+    display: flex;
+}
+
+.knobs {
+    margin-top: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+}
+
+.arrows {
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
 }
 
 #grid-container {

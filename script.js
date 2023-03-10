@@ -254,35 +254,35 @@ function moveCursorUp() {
 }
 
 document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowLeft') {
+    if (event.code === 'KeyQ') {
         isLeftKeyPressed = true;
       moveCursorLeft();
-    } else if (event.key === 'ArrowRight') {
+    } else if (event.code === 'KeyW') {
         isRightKeyPressed = true;
       moveCursorRight();
-    } else if (event.key === 'ArrowDown') {
+    } else if (event.code === 'KeyO') {
         isDownKeyPressed = true;
       moveCursorDown();
-    }else if (event.key === 'ArrowUp') {
+    }else if (event.code === 'KeyP') {
         isUpKeyPressed = true;
       moveCursorUp();
     }
   });
   
   document.addEventListener('keyup', (event) => {
-    if (event.key === 'ArrowRight') {
+    if (event.code === 'KeyW') {
       isRightKeyPressed = false;
       cancelAnimationFrame(animationID);
     }
-    if (event.key === 'ArrowDown') {
+    if (event.code === 'KeyO') {
         isDownKeyPressed = false;
         cancelAnimationFrame(animationID);
       }
-      if (event.key === 'ArrowLeft') {
+      if (event.code === 'keyQ') {
         isLeftKeyPressed = false;
         cancelAnimationFrame(animationID);
       }
-      if (event.key === 'ArrowUp') {
+      if (event.code === 'KeyP') {
         isUpKeyPressed = false;
         cancelAnimationFrame(animationID);
       }
