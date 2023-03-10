@@ -4,8 +4,6 @@ const gridCanvas = {
     gridlines: true,
     rainbowMode: false,
     eraserMode: false,
-    previousCursorPosition: 0,
-    cursorPosition: 1,
     grids: []
 };
 
@@ -68,7 +66,6 @@ function drawGrid(numOfGrids) {
                 newGrid.style.backgroundColor = generateRainbowColor();
             } else newGrid.style.backgroundColor = "black";
         });
-        newGrid.setAttribute("data-position", i + 1);
         canvas.appendChild(newGrid);
     }
 
