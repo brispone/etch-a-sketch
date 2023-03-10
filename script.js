@@ -4,7 +4,9 @@ const gridCanvas = {
     gridlines: true,
     rainbowMode: false,
     eraserMode: false,
-    cursorPosition: 1
+    previousCursorPosition: 0,
+    cursorPosition: 1,
+    grids: []
 };
 
 
@@ -66,9 +68,11 @@ function drawGrid(numOfGrids) {
                 newGrid.style.backgroundColor = generateRainbowColor();
             } else newGrid.style.backgroundColor = "black";
         });
-
+        newGrid.setAttribute("data-position", i + 1);
         canvas.appendChild(newGrid);
     }
+
+    gridCanvas.grids = canvas.childNodes;
     
 }
 
@@ -96,9 +100,9 @@ function changeDimensions() {
         return changeDimensions()
     }
 
-    gridCanvas.currentDimensions = newDimensions;
+    gridCanvas.currentDimensions = parseInt(newDimensions);
     gridCanvas.cursorPosition = 1;
-    drawGrid(newDimensions);
+    drawGrid(parseInt(newDimensions));
 
 }
 
@@ -184,12 +188,13 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
-/*
+
 
 let animationID;
 let isRightKeyPressed = false;
 let isDownKeyPressed = false;
 let isLeftKeyPressed = false;
+let isUpKeyPressed = false;
 let lastUpdateTime = 0;
 
 function moveCursorRight() {
@@ -197,8 +202,11 @@ function moveCursorRight() {
     if (isRightKeyPressed && (currentTime - lastUpdateTime > 25 && (gridCanvas.cursorPosition === 0 || gridCanvas.cursorPosition % gridCanvas.currentDimensions != 0))) {
     animationID = requestAnimationFrame(moveCursorRight);
     const grids = document.querySelector("#grid-container").childNodes;
+      gridCanvas.previousCursorPosition = gridCanvas.cursorPosition;
       gridCanvas.cursorPosition++;
       grids[gridCanvas.cursorPosition-1].style.backgroundColor = "black";
+      grids[gridCanvas.cursorPosition-1].style.border = "1px inset #505050";
+      grids[gridCanvas.previousCursorPosition-1].style.border = "1px solid #505050"
       lastUpdateTime = currentTime;
     }
 }
@@ -208,8 +216,11 @@ function moveCursorLeft() {
     if (isLeftKeyPressed && (currentTime - lastUpdateTime > 25 && (gridCanvas.cursorPosition-1) % gridCanvas.currentDimensions != 0)) {
     animationID = requestAnimationFrame(moveCursorLeft);
     const grids = document.querySelector("#grid-container").childNodes;
+      gridCanvas.previousCursorPosition = gridCanvas.cursorPosition;
       gridCanvas.cursorPosition--;
       grids[gridCanvas.cursorPosition-1].style.backgroundColor = "black";
+      grids[gridCanvas.cursorPosition-1].style.border = "1px inset #505050";
+      grids[gridCanvas.previousCursorPosition-1].style.border = "1px solid #505050"
       lastUpdateTime = currentTime;
     }
 }
@@ -219,8 +230,11 @@ function moveCursorDown() {
     if (isDownKeyPressed && (currentTime - lastUpdateTime > 25 && (gridCanvas.cursorPosition <= (gridCanvas.currentDimensions * gridCanvas.currentDimensions)- gridCanvas.currentDimensions))) {
     animationID = requestAnimationFrame(moveCursorDown);
     const grids = document.querySelector("#grid-container").childNodes;
+      gridCanvas.previousCursorPosition = gridCanvas.cursorPosition;
       gridCanvas.cursorPosition += gridCanvas.currentDimensions;
-      grids[gridCanvas.cursorPosition-1].style.backgroundColor = "black";
+      gridCanvas.grids[gridCanvas.cursorPosition-1].style.backgroundColor = "black";
+      grids[gridCanvas.cursorPosition-1].style.border = "1px inset #505050";
+      grids[gridCanvas.previousCursorPosition-1].style.border = "1px solid #505050"
       lastUpdateTime = currentTime;
     }
 }
@@ -230,8 +244,11 @@ function moveCursorUp() {
     if (isUpKeyPressed && (currentTime - lastUpdateTime > 25 && (gridCanvas.cursorPosition > gridCanvas.currentDimensions))) {
     animationID = requestAnimationFrame(moveCursorUp);
     const grids = document.querySelector("#grid-container").childNodes;
+      gridCanvas.previousCursorPosition = gridCanvas.cursorPosition;
       gridCanvas.cursorPosition -= gridCanvas.currentDimensions;
       grids[gridCanvas.cursorPosition-1].style.backgroundColor = "black";
+      grids[gridCanvas.cursorPosition-1].style.border = "1px inset #505050";
+      grids[gridCanvas.previousCursorPosition-1].style.border = "1px solid #505050"
       lastUpdateTime = currentTime;
     }
 }
@@ -271,4 +288,3 @@ document.addEventListener('keydown', (event) => {
       }
   });
 
-  */
