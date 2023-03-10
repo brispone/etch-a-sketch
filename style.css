@@ -7,29 +7,6 @@
     font-family: 'Roboto', sans-serif;
 }
 
-#container-2 {
-    display: flex;
-}
-
-.knobs {
-    margin-top: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-}
-
-img {
-    height: 100px;
-    width: 100px;
-}
-
-.arrows {
-    font-family: 'Roboto', sans-serif;
-    font-size: 40px;
-    font-weight: bold;
-}
-
 #grid-container {
     display: grid;
     border: 2px solid black;
@@ -43,9 +20,9 @@ img {
     box-sizing: border-box;
     background: #F0F0F0;
 }
-/* Playing around with visibility while surrounded by all black squares - loses some of that classic EtchASketch "feel" though */
+
 .grid-unit:hover {
-    border: 1px inset #505050;
+    border: 1px dotted #505050;
 }
 
 .grid-unit-borderless {
@@ -53,7 +30,7 @@ img {
     box-sizing: border-box;
     background: #F0F0F0;
 }
-/* Playing around with visibility while surrounded by all black squares - loses some of that classic EtchASketch "feel" though */
+
 .grid-unit-borderless:hover {
     border: 1px solid #505050;
 }
