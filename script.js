@@ -4,7 +4,19 @@ const gridCanvas = {
     gridlines: true,
     rainbowMode: false,
     eraserMode: false,
-    grids: []
+    grids: [],
+    shades: [
+                "#484848",
+                "#404040", 
+                "#383838",
+                "#303030",
+                "#282828",
+                "#202020",
+                "#181818",
+                "#101010",
+                "#080808",
+                "black"
+            ]
 };
 
 
@@ -51,6 +63,7 @@ function drawGrid(numOfGrids) {
 
     for(let i = 0; i < totalGrids; i++) {
         const newGrid = document.createElement("div");
+        newGrid.setAttribute("data-shade", "0");
         newGrid.style.cssText = `height: ${gridSize}px; width: ${gridSize}px`;
         if(gridCanvas.gridlines) { // if gridlines are turned on, add css styling w/ border, else add one without
             newGrid.classList.add("grid-unit");
@@ -64,7 +77,10 @@ function drawGrid(numOfGrids) {
                 newGrid.style.backgroundColor = "#F0F0F0";
             } else if(gridCanvas.rainbowMode) {
                 newGrid.style.backgroundColor = generateRainbowColor();
-            } else newGrid.style.backgroundColor = "black";
+            } else if(parseInt(newGrid.getAttribute("data-shade")) < 10) {
+                newGrid.setAttribute("data-shade", parseInt(newGrid.getAttribute("data-shade")) + 1);
+                newGrid.style.backgroundColor = gridCanvas.shades[parseInt(newGrid.getAttribute("data-shade"))];
+            }
         });
         canvas.appendChild(newGrid);
     }
