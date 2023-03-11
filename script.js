@@ -5,7 +5,7 @@ const gridCanvas = {
     rainbowMode: false,
     eraserMode: false,
     grids: [],
-    shades: [
+    shades: [ // increasingly darker shades of black, for the normal drawing mode
                 "#484848",
                 "#404040", 
                 "#383838",
@@ -23,31 +23,11 @@ const gridCanvas = {
 // Function to generate a random color of the rainbow for rainbow mode
 function generateRainbowColor() {
     const randomColorNum = Math.floor(Math.random() * 7);
-    let randomColor = "";
-    switch(randomColorNum) {
-        case 0:
-            randomColor = "red";
-            break;
-        case 1:
-            randomColor = "orange";
-            break;
-        case 2:
-            randomColor = "yellow";
-            break;
-        case 3:
-            randomColor = "green";
-            break;
-        case 4:
-            randomColor = "blue";
-            break;
-        case 5:
-            randomColor = "indigo";
-            break;
-        case 6:
-            randomColor = "violet";
-            break;
-    }
-    return randomColor;
+    const rainbowColors = [
+        "red", "orange", "yellow", "green", "blue", "indigo", "violet"
+    ]
+
+    return rainbowColors[randomColorNum];
 }
 
 function drawGrid(numOfGrids) {
