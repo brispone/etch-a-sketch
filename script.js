@@ -25,7 +25,7 @@ function generateRainbowColor() {
     const randomColorNum = Math.floor(Math.random() * 7);
     const rainbowColors = [
         "red", "orange", "yellow", "green", "blue", "indigo", "violet"
-    ]
+    ];
 
     return rainbowColors[randomColorNum];
 }
@@ -55,6 +55,7 @@ function drawGrid(numOfGrids) {
         newGrid.addEventListener("mouseover", () => {
             if(gridCanvas.eraserMode) {
                 newGrid.style.backgroundColor = "#F0F0F0";
+                newGrid.setAttribute("data-shade", 0);
             } else if(gridCanvas.rainbowMode) {
                 newGrid.style.backgroundColor = generateRainbowColor();
             } else if(parseInt(newGrid.getAttribute("data-shade")) < 10) {
